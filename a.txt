@@ -1,0 +1,32 @@
+
+SQL> CREATE TABLE DEPENDENT(Essn NUMBER(30) NOT NULL,Dependent_name VARCHAR(10) NOT NULL,Sex CHAR,Bdate DATE,Relationship VARCHAR(30));
+
+Table created.
+
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (333445555,'Alice','F',DATE '1986-04-05','Daughter');
+
+1 row created.
+
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (333445555,'Theodore','M',DATE '1983-10-25','Son');
+
+1 row created.
+
+SQL>
+SQL>
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (333445555,'Joy','F',DATE '1958-05-03','Spouse');
+
+1 row created.
+
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (987654321,'Abner','M',DATE '1942-02-28','Spouse');
+
+1 row created.
+
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (123456789,'Michael','M',DATE '1988-01-04','Son');
+
+1 row created.
+
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (123456789,'Alice','F',DATE '1988-12-30','Daughter');
+
+1 row created.
+
+SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (123456789,'Elizabeth','F',DATE '1967-05-05','Spouce');

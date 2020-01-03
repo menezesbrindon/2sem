@@ -1,32 +1,120 @@
+ CREATE TABLE EMPLOYEE(Fname VARCHAR(10),Minit VARCHAR(10),Lname VARCHAR(10),Bdate DATE,Address VARCHAR(30),Sex CHAR,Salary DECIMAL(10,2),Super_ssn CHAR(9),Dno INT);
 
-SQL> CREATE TABLE DEPENDENT(Essn NUMBER(30) NOT NULL,Dependent_name VARCHAR(10) NOT NULL,Sex CHAR,Bdate DATE,Relationship VARCHAR(30));
 
-Table created.
 
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (333445555,'Alice','F',DATE '1986-04-05','Daughter');
+insert into EMPLOYEE(Fname,Minit,Lname,ssn,Bdate,Address,Sex,Salary,Super_ssn,Dno) values ('Franklin','T','Wong',333445555,DATE '1955-12-08','638 Voss, Houston, TX','M',40000,888665555,5);
 
-1 row created.
 
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (333445555,'Theodore','M',DATE '1983-10-25','Son');
+2
 
-1 row created.
+ Select Fname,Minit,Lname From EMPLOYEE;
 
-SQL>
-SQL>
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (333445555,'Joy','F',DATE '1958-05-03','Spouse');
+FNAME      MINIT      LNAME
+---------- ---------- ----------
+John       B          Smith
+Franklin   T          Wong
+Alicia     J          Zelaya
+Jennifer   S          WALLACE
+Ramesh     K          Narayan
+Joyce      A          English
+Ahmad      V          Jabbar
+James      E          Borg
 
-1 row created.
+8 rows selected.
 
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (987654321,'Abner','M',DATE '1942-02-28','Spouse');
+3
 
-1 row created.
+ Select Fname,Minit,Lname From EMPLOYEE where Address LIKE '%Houston%';
 
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (123456789,'Michael','M',DATE '1988-01-04','Son');
+FNAME      MINIT      LNAME
+---------- ---------- ----------
+John       B          Smith
+Franklin   T          Wong
+Joyce      A          English
+Ahmad      V          Jabbar
+James      E          Borg
 
-1 row created.
+4
 
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (123456789,'Alice','F',DATE '1988-12-30','Daughter');
+ ALTER TABLE EMPLOYEE ADD(Phone_no NUMBER(11));
 
-1 row created.
+Table altered.
 
-SQL> insert into DEPENDENT(Essn,Dependent_name,Sex,Bdate,Relationship) values (123456789,'Elizabeth','F',DATE '1967-05-05','Spouce');
+5
+
+ Update EMPLOYEE set Phone_no =7894561230 where Fname='John';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =1234567890 where Fname='Franklin';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =7412589630 where Fname='Alicia';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =5648972310 where Fname='Jennifer';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =9638527410 where Fname='Ramesh';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =1239876540 where Fname='Joyce';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =7889441323 where Fname='Ahmad';
+
+1 row updated.
+
+SQL> Update EMPLOYEE set Phone_no =7889441123 where Fname='James';
+
+1 row updated.
+
+
+6
+ 
+ DESC EMPLOYEE
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FNAME                                              VARCHAR2(10)
+ MINIT                                              VARCHAR2(10)
+ LNAME                                              VARCHAR2(10)
+ SSN                                       NOT NULL NUMBER(30)
+ BDATE                                              DATE
+ ADDRESS                                            VARCHAR2(50)
+ SEX                                                CHAR(1)
+ SALARY                                             NUMBER(10,2)
+ SUPER_SSN                                          CHAR(9)
+ DNO                                                NUMBER(38)
+ PHONE_NO                                           NUMBER(11)
+
+7
+ 
+ Select Fname,Minit,Lname From EMPLOYEE where Address LIKE '%Humble%';
+
+FNAME      MINIT      LNAME
+---------- ---------- ----------
+Ramesh     K          Narayan
+ 
+
+DELETE  From EMPLOYEE where Address LIKE '%Humble%';
+
+1 row deleted.
+
+Select Fname,Minit,Lname From EMPLOYEE where Address LIKE '%Humble%';
+
+no rows selected
+
+8
+
+
+ RENAME EMPLOYEE to employee1;
+
+Table renamed.
+
+
+9

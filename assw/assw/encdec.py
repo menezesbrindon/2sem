@@ -15,18 +15,33 @@ s=''.join(x)
 print(s)
 print('the decoded text is:')
 #print(x)
-m=0
+if b%2!=0:
+    m=0
 
-for i in s[0:b//2+1]:
-    #print(i)
-    x[m]=i
-    m=m+2
+    for i in s[0:b//2+1]:
+        #print(i)
+        x[m]=i
+        m=m+2
 
-m=1
-for i in s[b//2+1:]:
-    #print(i,m,len(x))
-    x[m]=i
-    m=m+2
+    m=1
+    for i in s[b//2+1:]:
+        #print(i,m,len(x))
+        x[m]=i
+        m=m+2
+else:
+    m=0
+
+    for i in s[0:b//2]:
+        #print(i)
+        x[m]=i
+        m=m+2
+
+    m=1
+    for i in s[b//2:]:
+        #print(i,m,len(x))
+        x[m]=i
+        m=m+2
+    
 #print(x)   
 d=''.join(x)
 print(d)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<std>
-  <student id="123" roll="1">
+<std xmlns="www.manipal.edu/students">
+  <student  roll="1" id="123">
     <name>ABC</name>
   </student>
   <student id="124" roll="2">

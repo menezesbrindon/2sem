@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<std>
+  <student id="123" roll="1">
+    <name>ABC</name>
+  </student>
+</std>

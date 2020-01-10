@@ -1,0 +1,128 @@
+CREATE TABLE DEPARTMENT
+(dept_name VARCHAR(15) NOT NULL,
+PRIMARY KEY(dept_name),
+building CHAR(15),
+budget INT
+);
+ 
+----------------------------------------------------
+CREATE TABLE COURSE
+(course_id VARCHAR(10) NOT NULL,
+PRIMARY KEY(course_id),
+title char(40),
+dept_name char(15),
+credits INT
+);
+
+---------------------------------------------------
+
+create table INSTRUCTOR
+(ID INT NOT NULL,
+PRIMARY KEY(ID),
+name varchar(15),
+dept_name char(15),
+salary INT
+);
+---------------------------------------------------------
+
+create table SECTION
+(course_id varchar(15),
+sec_id INT,
+semseter CHAR(10),
+year INT,
+building CHAR(10),
+room_number INT,
+time_slot_id char
+);
+
+-------------------------------------------------
+
+Create table TEACHES
+(ID INT,
+course_id varchar(15),
+sec_id INT,
+semester CHAR,
+year INT
+);
+
+
+
+-----------------------------------------------------------
+
+insert into DEPARTMENT VALUES('Biology','Watson',90000);
+insert into DEPARTMENT VALUES('Comp.Sci.','Taylor',100000);
+insert into DEPARTMENT VALUES('Elec.Eng.','Taylor',85000);
+insert into DEPARTMENT VALUES('Finance','Painter',120000);
+insert into DEPARTMENT VALUES('History','Painter',50000);
+insert into DEPARTMENT VALUES('Music','Packard',80000);
+insert into DEPARTMENT VALUES('Physics','Watson',70000);
+
+--------------------------------------------------------------
+
+INSERT INTO COURSE VALUES('BIO-101','Intro. to Biology','Biology',4);
+INSERT INTO COURSE VALUES('BIO-301','Genetics','Biology',4);
+INSERT INTO COURSE VALUES('BIO-399','Computational Biology','Biology',3);
+INSERT INTO COURSE VALUES('CS-101','Intro. to Computation Science','Comp. Sci.',4);
+INSERT INTO COURSE VALUES('CS-190','Game Design','Comp. Sci.',4);
+INSERT INTO COURSE VALUES('CS-315','Robotics','Comp. Sci.',3);
+INSERT INTO COURSE VALUES('CS-319','Image Processing','Comp. Sci.',3);
+INSERT INTO COURSE VALUES('CS-347','Database System Concepts','Comp. Sci.',3);
+INSERT INTO COURSE VALUES('EE-181','Intro. to Digital System','Elec. Eng.',3);
+INSERT INTO COURSE VALUES('FIN-201','Investment Banking','Finance',3);
+INSERT INTO COURSE VALUES('HIS-351','World History','Histroy',3);
+INSERT INTO COURSE VALUES('MU-199','Music Video Production','Music',3);
+INSERT INTO COURSE VALUES('PHY-101','Physical Principles','Physics',4);
+
+---------------------------------------------------------------------------------
+insert into INSTRUCTOR (id,name,dept_name,salary) values(10101,'Srinivasan','Comp.Sci.',65000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(12121,'Wu','Finance',90000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(15151,'Mozart','Music',40000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(22222,'Einstein','Physics',95000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(32343,'El Said','History',60000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(33456,'Gold','Physics',87000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(45565,'Katz','Comp.Sci.',75000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(58583,'Califieri','History',62000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(76543,'Singh','Finance',80000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(76766,'Crick','Biology',72000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(83821,'Brandt','Comp.Sci.',920000);
+insert into INSTRUCTOR (id,name,dept_name,salary) values(98345,'Kim','Elec.Eng.',80000);
+
+
+-------------------------------------------------------------------------------------------
+
+INSERT INTO SECTION VALUES('BIO-101',1,'Summer',2009,'Painter',514,'B');
+INSERT INTO SECTION VALUES('BIO-301',1,'Summer',2010,'Painter',514,'A');
+INSERT INTO SECTION VALUES('CS-101',1,'Fall',2009,'Packard',101,'H');
+INSERT INTO SECTION VALUES('CS-101',1,'Spring',2010,'Packard',101,'F');
+INSERT INTO SECTION VALUES('CS-190',1,'Spring',2009,'Taylor',3128,'E');
+INSERT INTO SECTION VALUES('CS-190',2,'Spring',2009,'Taylor',3128,'A');
+INSERT INTO SECTION VALUES('CS-315',1,'Spring',2010,'Watson',120,'D');
+INSERT INTO SECTION VALUES('CS-319',1,'Spring',2010,'Watson',100,'B');
+INSERT INTO SECTION VALUES('CS-319',2,'Spring',2010,'Taylor',3128,'C');
+INSERT INTO SECTION VALUES('CS-347',1,'Fall',2009,'Taylor',3128,'A');
+INSERT INTO SECTION VALUES('EE-181',1,'Spring',2009,'Taylor',3128,'C');
+INSERT INTO SECTION VALUES('FIN-201',1,'Spring',2010,'Packard',101,'B');
+INSERT INTO SECTION VALUES('HIS-351',1,'Spring',2010,'Painter',514,'C');
+INSERT INTO SECTION VALUES('MU-199',1,'Spring',2010,'Packard',101,'D');
+INSERT INTO SECTION VALUES('PHY-101',1,'Fall',2009,'Watson',100,'A');
+
+-------------------------------------------------------------------------------------------
+
+
+INSERT INTO teaches VALUES(10101, 'CS-101',1,'fall', 2009);
+INSERT INTO teaches VALUES(10101, 'CS-315',1,'spring', 2010);
+INSERT INTO teaches VALUES(10101, 'CS-347',1,'fall', 2009);
+INSERT INTO teaches VALUES(12121, 'FIN-201',1,'spring', 2010);
+INSERT INTO teaches VALUES(15151, 'MU-199',1,'spring', 2010);
+INSERT INTO teaches VALUES(22222, 'PHY-101',1,'fall', 2009);
+INSERT INTO teaches VALUES(32343, 'HIS-351',1,'spring', 2010);
+INSERT INTO teaches VALUES(45565, 'CS-101',1,'spring', 2010);
+INSERT INTO teaches VALUES(45565, 'CS-319',1,'spring', 2010);
+INSERT INTO teaches VALUES(76766, 'BIO-101',1,'summer', 2009);
+INSERT INTO teaches VALUES(76766, 'BIO-301',1,'summer', 2010);
+INSERT INTO teaches VALUES(83821, 'CS-190',1,'spring', 2009);
+INSERT INTO teaches VALUES(83821, 'CS-190',2,'spring', 2009);
+INSERT INTO teaches VALUES(83821, 'CS-319',2,'spring', 2010);
+INSERT INTO teaches VALUES(98345, 'EE-181',1,'spring', 2010);
+
+---------------------------------------------------------------------------------------------

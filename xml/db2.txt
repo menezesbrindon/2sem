@@ -126,3 +126,42 @@ INSERT INTO teaches VALUES(83821, 'CS-319',2,'spring', 2010);
 INSERT INTO teaches VALUES(98345, 'EE-181',1,'spring', 2010);
 
 ---------------------------------------------------------------------------------------------
+2..........................................................................................
+
+ALTER TABLE departments add primary key(dept_name);
+
+3..........................................................................................
+
+ALTER TABLE instructor add primary key(ID);
+
+Table altered.
+4..........................................................................................
+
+ALTER TABLE course add primary key(course_id);
+
+Table altered.
+
+5.............................................................................................
+
+ALTER TABLE section add primary key(course_id,sec_id,semester,year);
+
+Table altered.
+6...............................................................................................
+
+ALTER TABLE teaches add primary key(id,course_id,sec_id,semester,year);
+
+Table altered.
+
+8...............................................................................................
+
+ alter table instructor modify(name varchar(30) NOT NULL);
+
+Table altered.
+
+9..................................................................................................
+
+ALTER TABLE course  ADD CONSTRAINT dept_name FOREIGN KEY (dept_name) REFERENCES departments(dept_name);
+
+10............................................................................................................
+
+ ALTER TABLE instructor ADD CONSTRAINT fk1_deptname FOREIGN KEY (dept_name) REFERENCES departments(dept_name);

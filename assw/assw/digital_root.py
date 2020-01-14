@@ -13,4 +13,6 @@ s2=s(a)
 
 print("digital root",s2)
 
+print("USING MOD 9:",a%9)
+
       

@@ -1,0 +1,5 @@
+a=input("enter date in mm/dd/year format: ")
+a=a.split('/')
+d={1:"January",2:"February",3:"March",4:"April",5:"May",6:"June",7:"July",8:"August",
+9:"September",10:"October",11:"November",12:"December"}
+print(str(d[int(a[0])])+' '+str(int(a[1]))+', '+a[2])

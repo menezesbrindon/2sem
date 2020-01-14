@@ -2,7 +2,7 @@ a=input('enter the string')
 
 print('the lenth of the string is',len(a))
 print('string *10=',a*10)
-print('first char of the string is',a[0])
+print('first char of the string is '+ a[0])
 print('first 3 char of the string is',a[0:3])
 print('last 3 char of the string is',a[len(a)-3:])
 

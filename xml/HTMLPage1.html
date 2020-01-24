@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function m() {
+            var a = document.getElementById('p').value;
+            var b = document.getElementById('cp').value;
+            if (a == b)
+            {
+                return true;
+            }
+            else {
+                alert('Retry');
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="HTMLPage3.html" onsubmit="return m();"><pre>
+<label>Name</label>
+<input type="text" name="name" id="u" /><br />
+
+<label>Password</label>
+<input type="password" name="ps" id="p" /><br />
+
+<label>Confirm Password</label>
+<input type="password" name="cp" id="cp" /><br />
+
+<input type="submit" value="signup" id="s"  />  <input type="reset" value="Cancel" id="s" />
+
+
+</pre>
+    </form>
+</body>
+</html>

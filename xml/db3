@@ -1,0 +1,324 @@
+
+select * from employee1;
+
+FNAME      MINIT      LNAME             SSN BDATE     ADDRESS                                         S     SALARY SUPER_SSN        DNO   PHONE_NO
+---------- ---------- ---------- ---------- --------- -------------------------------------------------- - ---------- --------- ---------- ----------
+John       B          Smith       123456789 09-JAN-65 731 Fondren,Houston,TX                          M 30000 333445555          5 7894561230
+Franklin   T          Wong        333445555 08-DEC-55 638 Voss, Houston, TX                           M 40000 888665555          5 1234567890
+Alicia     J          Zelaya      999887777 19-JAN-68 3321 Castle, Spring, TX                         F 25000 987654321          4 7412589630
+Jennifer   S          WALLACE     987654321 20-JUN-41 291 Berry, Bellaire, TX                         F 43000 888665555          4 5648972310
+Joyce      A          English    4543453453 31-JUL-72 5631 Rice, Houston, TX                          F 25000 333445555          5 1239876540
+Ahmad      V          Jabbar      987987987 29-MAR-69 980 Dallas, Houston, TX                         M 25000 987654321          4 7889441323
+James      E          Borg        888665555 10-NOV-37 450 Stone, Houston, TX                          M 55000                    1 7889441123
+
+7 rows selected.
+
+SQL> select * from department;
+
+DNAME                             DNUMBER    MGR_SSN MGR_START
+------------------------------ ---------- ---------- ---------
+Research                                5  333445555 22-MAY-88
+Administration                          4  987654321 01-JAN-95
+Headqaurters                            1  888665555 19-JUN-81
+
+
+select * from works_on;
+
+      ESSN        PNO      HOURS
+---------- ---------- ----------
+ 123456789          1       32.5
+ 123456789          2        7.5
+ 666884444          3         40
+ 453453453          1         20
+ 453453453          2         20
+ 333445555          2         10
+ 333445555          3         10
+ 333445555         10         10
+ 333445555         20         10
+ 999887777         30         30
+ 999887777         10         10
+
+      ESSN        PNO      HOURS
+---------- ---------- ----------
+ 987987987         10         35
+ 987987987         30          5
+ 987654321         30         20
+ 987654321         20         15
+ 888665555         20
+
+16 rows selected.
+
+SQL> select * from project;
+
+PNAME                             PNUMBER PLOCATION             DNUM
+------------------------------ ---------- --------------- ----------
+ProductX                                1 Bellaire                 5
+ProductY                                2 Sugarland                5
+ProductZ                                3 Houston                  5
+Computerization                        10 Stafford                 4
+Reorganization                         20 Houston                  1
+Newbenefits                            30 Stafford                 4
+
+
+
+1.........................................
+
+select sum(salary),max(salary),min(salary),avg(salary) from employee1;
+
+SUM(SALARY) MAX(SALARY) MIN(SALARY) AVG(SALARY)
+----------- ----------- ----------- -----------
+     243000       55000       25000  34714.2857
+
+2.........................................................
+
+ select sum(e.salary),max(e.salary),min(e.salary),avg(e.salary) from employee1 e,department d where e.dno=d.dnumber and d.dname='Research';
+
+SUM(E.SALARY) MAX(E.SALARY) MIN(E.SALARY) AVG(E.SALARY)
+------------- ------------- ------------- -------------
+        95000         40000         25000    31666.6667
+
+3............................................................
+
+
+ select count(*) as total_employees from employee1;
+
+TOTAL_EMPLOYEES
+---------------
+              7
+
+
+4........................................
+
+
+select count(*) as total_research_emp from employee1 e,department d where e.dno=d.dnumber and d.dname='Research';
+
+TOTAL_RESEARCH_EMP
+------------------
+                 3
+
+
+5.......................................................
+
+ select count(distinct(salary)) from employee1;
+
+COUNT(DISTINCT(SALARY))
+-----------------------
+                      5
+
+
+6.................................................................................................
+
+ select d.dname,count(*) from employee1 e, department d where dno=d.dnumber group by dno,dname having avg(e.salary)>30000;
+
+DNAME                            COUNT(*)
+------------------------------ ----------
+Research                                3
+Administration                          3
+Headqaurters                            1
+
+
+7.................................................................................................
+
+
+ select e.dno,count(*),avg(e.salary) from employee1 e, department d where dno=d.dnumber group by dno;
+
+       DNO   COUNT(*) AVG(E.SALARY)
+---------- ---------- -------------
+         1          1         55000
+         5          3    31666.6667
+         4          3         31000
+
+
+8..........................................................................................
+
+select pname,pnumber, count(*) as emp from employee1 e,project p,works_on w where e.ssn=w.essn and w.pno=pnumber group by pnumber,pname;
+
+PNAME                             PNUMBER        EMP
+------------------------------ ---------- ----------
+Reorganization                         20          3
+ProductX                                1          1
+Computerization                        10          3
+Newbenefits                            30          3
+ProductY                                2          2
+ProductZ                                3          1
+
+9.........................................................................
+
+select pname,pnumber, count(essn) as emp from employee1 e,project p,works_on w where e.ssn=w.essn and w.pno=pnumber group by dno,pname,pnumber having dno=5;
+
+PNAME                             PNUMBER        EMP
+------------------------------ ---------- ----------
+ProductZ                                3          1
+Reorganization                         20          1
+ProductX                                1          1
+Computerization                        10          1
+ProductY                                2          2
+
+additional........................................................................................................
+
+
+select * from teaches;
+
+        ID COURSE_ID                          SEC_ID SEMESTER              YEAR
+---------- ------------------------------ ---------- --------------- ----------
+     10101 CS-101                                  1 Fall                  2009
+     10101 CS-315                                  1 Spring                2010
+     10101 CS-347                                  1 Fall                  2009
+     12121 FIN-201                                 1 Spring                2010
+     15151 MU-199                                  1 Spring                2010
+     22222 PHY-101                                 1 Fall                  2009
+     32343 HIS-351                                 1 Spring                2010
+     45565 CS-101                                  1 Spring                2010
+     45565 CS-319                                  1 Spring                2010
+     76766 BIO-101                                 1 Summer                2009
+     76766 BIO-301                                 1 Summer                2010
+
+        ID COURSE_ID                          SEC_ID SEMESTER              YEAR
+---------- ------------------------------ ---------- --------------- ----------
+     83821 CS-190                                  1 Spring                2009
+     83821 CS-190                                  2 Spring                2009
+     83821 CS-319                                  2 Spring                2010
+     98345 EE-181                                  1 Spring                2009
+
+15 rows selected.
+
+SQL> select * from instructor;
+
+        ID NAME                           DEPT_NAME           SALARY
+---------- ------------------------------ --------------- ----------
+     10101 Srinivasan                     Comp.Sci.            65000
+     12121 Wu                             Finance              90000
+     15151 Mozart                         Music                40000
+     22222 Einstein                       Physics              95000
+     32343 El Said                        History              60000
+     33456 Gold                           Physics              87000
+     45565 Katz                           Comp.Sci.            75000
+     58583 Califieri                      History              62000
+     76543 Singh                          Finance              80000
+     76766 Crick                          Biology              72000
+     83821 Brandt                         Comp.Sci.            92000
+
+        ID NAME                           DEPT_NAME           SALARY
+---------- ------------------------------ --------------- ----------
+     98345 Kim                            Elec.Eng.            80000
+
+12 rows selected.
+
+SQL> select * from course;
+
+COURSE_ID       TITLE                          DEPT_NAME          CREDITS
+--------------- ------------------------------ --------------- ----------
+BIO-101         Intro. to bio                  Biology                  4
+BIO-301         Genetics                       Biology                  4
+BIO-399         Computational Biology          Biology                  3
+CS-101          Intro. to Computer Science     Comp.Sci.                4
+CS-190          Game Design                    Comp.Sci.                4
+CS-315          Robotics                       Comp.Sci.                3
+CS-347          Database System Concepts       Comp.Sci.                3
+EE-181          Into. to Digital Systems       Elec.Eng.                3
+FIN-201         Investment Banking             Finance                  3
+HIS-351         World History                  History                  3
+MU-199          Musiv Video Production         Music                    3
+
+COURSE_ID       TITLE                          DEPT_NAME          CREDITS
+--------------- ------------------------------ --------------- ----------
+PHY-101         Physical Principles            Physics                  4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1........................................................................................................
+
+select count(*) from course;
+
+  COUNT(*)
+----------
+        12
+
+2----------------------------------------------------------------------------------------------------------
+
+select avg(salary) from instructor where dept_name='Comp.Sci.';
+
+AVG(SALARY)
+-----------
+ 77333.3333
+
+3------------------------------------------------------------------------------------------------------------
+
+select count(distinct(t.id)) from teaches t,instructor i where t.id=i.id and t.semester='Spring' and year=2010;
+
+COUNT(DISTINCT(T.ID))
+---------------------
+                    6
+
+4-----------------------------------------------------------------------------
+
+ select dept_name,avg(salary) from instructor group by dept_name;
+
+DEPT_NAME       AVG(SALARY)
+--------------- -----------
+Physics               91000
+Finance               85000
+Elec.Eng.             80000
+Comp.Sci.        77333.3333
+Biology               72000
+Music                 40000
+History               61000
+
+5----------------------------------------------------------------------
+
+select avg(salary) from instructor;
+
+AVG(SALARY)
+-----------
+ 74833.3333
+
+
+6---------------------------------------------------------------------------
+
+DEPT_NAME       COUNT(DISTINCT(T.ID))
+--------------- ---------------------
+Finance                             1
+Comp.Sci.                           3
+Music                               1
+History                             1
+
+
+7---------------------------------------------------------------------------
+
+
+select dept_name,avg(salary) from instructor group by dept_name having avg(salary)>42000;
+
+DEPT_NAME       AVG(SALARY)
+--------------- -----------
+Physics               91000
+Finance               85000
+Elec.Eng.             80000
+Comp.Sci.        77333.3333
+Biology               72000
+History               61000
+
+8--------------------------------------------------------------------------------------
+
+9-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

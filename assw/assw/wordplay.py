@@ -53,7 +53,7 @@ class wordplay:
                     x.append(i)
             
          return x
-lis=['cat','rat','bat','saturday','mat','malayalam']
+lis=['cat','rat','bat','saturday','mat','malayalam','kannan','lol']
 a=wordplay(lis)
 while(1):
  print('\n')

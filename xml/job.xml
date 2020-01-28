@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Jobs>
+  <Job id="3" name="GBackup" category="Development">
+    <Update>
+      <Status>Open</Status>
+      <Modified>Mon, 06 Feb 2017 20:27:45 -0400 MET DST</Modified>
+      <Salary>1000.00</Salary>
+    </Update>
+    <Contact>
+      <Person>Nathan</Person>
+      <Email>nathan@manipal.edu</Email>
+    </Contact>
+    <Skills>C#, Python</Skills>
+    <Details>System that will allow a super user to backup files</Details>
+  </Job>
+  <Job id="4" name="GBackup" category="Testing">
+    <Update>
+      <Status>Open</Status>
+      <Modified>Mon, 06 Feb 2017 21:23:42 -0400 MET DST</Modified>
+      <Salary>800.00</Salary>
+    </Update>
+    <Contact>
+      <Person>David</Person>
+      <Email>david@manipal.edu</Email>
+    </Contact>
+    <Skills>Selenium, Load Runner</Skills>
+    <Details>Test the system that will allow a super user to backup files</Details>
+  </Job>
+</Jobs>

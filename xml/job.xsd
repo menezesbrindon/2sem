@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    elementFormDefault="qualified"
+   
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="Jobs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Job" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Update">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Status" type="xs:string"/>
+                    <xs:element name="Modified" type="xs:string"/>
+                    <xs:element name="Salary" type="xs:float"/>
+                  </xs:sequence>
+                  
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Contact">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Person" type="xs:string"/>
+                    <xs:element name="Email" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Skills" type="xs:string"/>
+              <xs:element name="Details" type="xs:string"/>
+              
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer"/>
+            <xs:attribute name="name" type="xs:string"/>
+            <xs:attribute name="category" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

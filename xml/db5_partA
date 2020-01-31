@@ -1,0 +1,101 @@
+ create view physics as
+  2  select c.course_id,c.title,c.credits,b.building,b.room_number
+  3  from course c,section b where c.course_id=b.course_id and c.dept_name='Physics'and b.year=2009 and b.semester='Fall';
+
+View created.
+
+SQL> select * from physics;
+
+COURSE_ID       TITLE                             CREDITS BUILDING   ROOM_NUMBER
+--------------- ------------------------------ ---------- ---------- -----------
+PHY-101         Physical Principles                     4 Watson             100
+
+SQL>
+
+----------------------------------------------
+
+2............................
+
+select * from physics;
+
+COURSE_ID       TITLE                             CREDITS BUILDING   ROOM_NUMBER
+--------------- ------------------------------ ---------- ---------- -----------
+PHY-101         Physical Principles                     4 Watson             100
+
+3-------------------------------------------------------------------------------
+
+create view department_total_salary as
+  2  select dept_name,sum(salary) as total_salary from instructor group by dept_name;
+
+View created.
+
+SQL> select * from department_total_salary;
+
+DEPT_NAME       TOTAL_SALARY
+--------------- ------------
+Physics               182000
+Finance               170000
+Elec.Eng.              80000
+Comp.Sci.             232000
+Biology                72000
+Music                  40000
+History               122000
+
+7 rows selected.
+
+
+4--------------------------------------------------------------------------------
+
+       create view instructor_info as
+  2  select distinct i.id,i.name,s.building from instructor i, section s, teaches t where t.course_id=s.course_id and t.id=i.id;
+
+View created.
+
+SQL> select * from instructor_info;
+
+        ID NAME                           BUILDING
+---------- ------------------------------ ----------
+     10101 Srinivasan                     Packard
+     98345 Kim                            Taylor
+     10101 Srinivasan                     Taylor
+     32343 El Said                        Painter
+     22222 Einstein                       Watson
+     83821 Brandt                         Watson
+     15151 Mozart                         Packard
+     76766 Crick                          Painter
+     45565 Katz                           Taylor
+     45565 Katz                           Packard
+     83821 Brandt                         Taylor
+
+        ID NAME                           BUILDING
+---------- ------------------------------ ----------
+     10101 Srinivasan                     Watson
+     45565 Katz                           Watson
+     12121 Wu                             Packard
+
+14 rows selected.
+
+5---------------------------------------------------------------------------------------------------------
+
+
+ create view instructor_history as
+  2  select * from instructor where dept_name='History';
+
+View created.
+
+SQL> select * from instructor_history;
+
+        ID NAME                           DEPT_NAME           SALARY
+---------- ------------------------------ --------------- ----------
+     32343 El Said                        History              60000
+     58583 Califieri                      History              62000
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Use Company database for the following exercise 
+
+
+
+1---------------------------------------------------------------------------------------------------------------
+

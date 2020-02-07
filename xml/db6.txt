@@ -1,0 +1,195 @@
+insert into takes values(00128,'CS-101',1,'Fall',2009,'A');
+insert into takes values(00128,'CS-347',1,'Fall',2009,'A-');
+insert into takes values(12345,'CS-101',1,'Fall',2009,'C');
+insert into takes values(12345,'CS-190',2,'Spring',2009,'A');
+insert into takes values(12345,'CS-315',1,'Spring',2010,'A');
+insert into takes values(12345,'CS-347',1,'Fall',2009,'A');
+insert into takes values(19991,'HIS-351',1,'Spring',2010,'B');
+insert into takes values(23121,'FIN-201',1,'Spring',2010,'C+');
+insert into takes values(44553,'PHY-101',1,'Fall',2009,'B-');
+insert into takes values(45678,'CS-101',1,'Fall',2009,'F');
+insert into takes values(45678,'CS-101',1,'Spring',2010,'B+');
+insert into takes values(45678,'CS-319',1,'Spring',2010,'B');
+insert into takes values(54321,'CS-101',1,'Fall',2009,'A-');
+insert into takes values(54321,'CS-190',2,'Spring',2009,'B+');
+insert into takes values(55739,'MU-199',1,'Spring',2010,'A-');
+insert into takes values(76543,'CS-101',1,'Fall',2009,'A');
+insert into takes values(76543,'CS-319',2,'Spring',2010,'A');
+insert into takes values(76553,'EE-181',1,'Spring',2009,'C');
+insert into takes values(98765,'CS-101',2,'Fall',2009,'C-');
+insert into takes values(98765,'CS-315',1,'Spring',2010,'B');
+insert into takes values(98988,'BIO-101',2,'Summer',2009,'A');
+insert into takes values(98988,'BIO-301',1,'Summer',2010,'null');
+
+
+2----------------------------------------------------------------------------
+
+
+
+3-----------------------------------------------------------
+
+ SELECT *   FROM student S inner join takes T ON S.ID = T.ID;
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+       128 Zhang     Comp.Sci.        102        128 CS-101            1 Fall           2009 A
+       128 Zhang     Comp.Sci.        102        128 CS-347            1 Fall           2009 A-
+     12345 Shankar   Comp.Sci.         32      12345 CS-101            1 Fall           2009 C
+     12345 Shankar   Comp.Sci.         32      12345 CS-190            2 Spring         2009 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-315            1 Spring         2010 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-347            1 Fall           2009 A
+     19991 Brandt    History           80      19991 HIS-351           1 Spring         2010 B
+     23121 Chavez    Finance          110      23121 FIN-201           1 Spring         2010 C+
+     44553 Peltier   Physics           46      44553 PHY-101           1 Fall           2009 B-
+     54321 Williams  Comp.Sci.         54      54321 CS-101            1 Fall           2009 A-
+     54321 Williams  Comp.Sci.         54      54321 CS-190            2 Spring         2009 B+
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+     55739 Sanchez   Music             38      55739 MU-199            1 Spring         2010 A-
+     76543 Brown     Comp.Sci.         58      76543 CS-101            1 Fall           2009 A
+     76543 Brown     Comp.Sci.         58      76543 CS-319            2 Spring         2010 A
+     98765 Bourikas  Elec.Eng.         98      98765 CS-101            2 Fall           2009 C-
+     98765 Bourikas  Elec.Eng.         98      98765 CS-315            1 Spring         2010 B
+     98988 Tanaka    Biology          120      98988 BIO-101           2 Summer         2009 A
+     98988 Tanaka    Biology          120      98988 BIO-301           1 Summer         2010
+
+
+4-------------------------------------------------------------------------------------
+
+
+SELECT * FROM student natural join takes;
+
+        ID NAME      DEPT_NAME    TO_CRED COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- -------- ---------- -------- ---------- --
+       128 Zhang     Comp.Sci.        102 CS-101            1 Fall           2009 A
+       128 Zhang     Comp.Sci.        102 CS-347            1 Fall           2009 A-
+     12345 Shankar   Comp.Sci.         32 CS-101            1 Fall           2009 C
+     12345 Shankar   Comp.Sci.         32 CS-190            2 Spring         2009 A
+     12345 Shankar   Comp.Sci.         32 CS-315            1 Spring         2010 A
+     12345 Shankar   Comp.Sci.         32 CS-347            1 Fall           2009 A
+     19991 Brandt    History           80 HIS-351           1 Spring         2010 B
+     23121 Chavez    Finance          110 FIN-201           1 Spring         2010 C+
+     44553 Peltier   Physics           46 PHY-101           1 Fall           2009 B-
+     54321 Williams  Comp.Sci.         54 CS-101            1 Fall           2009 A-
+     54321 Williams  Comp.Sci.         54 CS-190            2 Spring         2009 B+
+
+        ID NAME      DEPT_NAME    TO_CRED COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- -------- ---------- -------- ---------- --
+     55739 Sanchez   Music             38 MU-199            1 Spring         2010 A-
+     76543 Brown     Comp.Sci.         58 CS-101            1 Fall           2009 A
+     76543 Brown     Comp.Sci.         58 CS-319            2 Spring         2010 A
+     98765 Bourikas  Elec.Eng.         98 CS-101            2 Fall           2009 C-
+     98765 Bourikas  Elec.Eng.         98 CS-315            1 Spring         2010 B
+     98988 Tanaka    Biology          120 BIO-101           2 Summer         2009 A
+     98988 Tanaka    Biology          120 BIO-301           1 Summer         2010
+
+
+
+5--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+ SELECT * FROM student S left outer join takes T ON S.ID = T.ID;
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+       128 Zhang     Comp.Sci.        102        128 CS-101            1 Fall           2009 A
+       128 Zhang     Comp.Sci.        102        128 CS-347            1 Fall           2009 A-
+     12345 Shankar   Comp.Sci.         32      12345 CS-101            1 Fall           2009 C
+     12345 Shankar   Comp.Sci.         32      12345 CS-190            2 Spring         2009 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-315            1 Spring         2010 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-347            1 Fall           2009 A
+     19991 Brandt    History           80      19991 HIS-351           1 Spring         2010 B
+     23121 Chavez    Finance          110      23121 FIN-201           1 Spring         2010 C+
+     44553 Peltier   Physics           46      44553 PHY-101           1 Fall           2009 B-
+     54321 Williams  Comp.Sci.         54      54321 CS-101            1 Fall           2009 A-
+     54321 Williams  Comp.Sci.         54      54321 CS-190            2 Spring         2009 B+
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+     55739 Sanchez   Music             38      55739 MU-199            1 Spring         2010 A-
+     76543 Brown     Comp.Sci.         58      76543 CS-101            1 Fall           2009 A
+     76543 Brown     Comp.Sci.         58      76543 CS-319            2 Spring         2010 A
+     98765 Bourikas  Elec.Eng.         98      98765 CS-101            2 Fall           2009 C-
+     98765 Bourikas  Elec.Eng.         98      98765 CS-315            1 Spring         2010 B
+     98988 Tanaka    Biology          120      98988 BIO-101           2 Summer         2009 A
+     98988 Tanaka    Biology          120      98988 BIO-301           1 Summer         2010
+     76653 Aoi       Elec.Eng.         60
+     70557 Snow      Physics            0
+
+20 rows selected.
+
+
+
+6-------------------------------------------------------------------------------------------------------------------
+
+  SELECT FROM student  S right outer join takes  T ON S.ID = T.ID;
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+       128 Zhang     Comp.Sci.        102        128 CS-347            1 Fall           2009 A-
+       128 Zhang     Comp.Sci.        102        128 CS-101            1 Fall           2009 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-347            1 Fall           2009 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-315            1 Spring         2010 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-190            2 Spring         2009 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-101            1 Fall           2009 C
+     19991 Brandt    History           80      19991 HIS-351           1 Spring         2010 B
+     23121 Chavez    Finance          110      23121 FIN-201           1 Spring         2010 C+
+     44553 Peltier   Physics           46      44553 PHY-101           1 Fall           2009 B-
+     54321 Williams  Comp.Sci.         54      54321 CS-190            2 Spring         2009 B+
+     54321 Williams  Comp.Sci.         54      54321 CS-101            1 Fall           2009 A-
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+     55739 Sanchez   Music             38      55739 MU-199            1 Spring         2010 A-
+     76543 Brown     Comp.Sci.         58      76543 CS-319            2 Spring         2010 A
+     76543 Brown     Comp.Sci.         58      76543 CS-101            1 Fall           2009 A
+     98765 Bourikas  Elec.Eng.         98      98765 CS-315            1 Spring         2010 B
+     98765 Bourikas  Elec.Eng.         98      98765 CS-101            2 Fall           2009 C-
+     98988 Tanaka    Biology          120      98988 BIO-301           1 Summer         2010
+     98988 Tanaka    Biology          120      98988 BIO-101           2 Summer         2009 A
+                                               45678 CS-319            1 Spring         2010 B
+                                               45678 CS-101            1 Spring         2010 B+
+                                               45678 CS-101            1 Fall           2009 F
+                                               76553 EE-181            1 Spring         2009 C
+
+7-----------------------------------------------------------------------------------------
+
+SELECT * FROM student  S full outer join takes T ON S.ID = T.ID;
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+       128 Zhang     Comp.Sci.        102        128 CS-101            1 Fall           2009 A
+       128 Zhang     Comp.Sci.        102        128 CS-347            1 Fall           2009 A-
+     12345 Shankar   Comp.Sci.         32      12345 CS-101            1 Fall           2009 C
+     12345 Shankar   Comp.Sci.         32      12345 CS-190            2 Spring         2009 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-315            1 Spring         2010 A
+     12345 Shankar   Comp.Sci.         32      12345 CS-347            1 Fall           2009 A
+     19991 Brandt    History           80      19991 HIS-351           1 Spring         2010 B
+     23121 Chavez    Finance          110      23121 FIN-201           1 Spring         2010 C+
+     44553 Peltier   Physics           46      44553 PHY-101           1 Fall           2009 B-
+                                               45678 CS-101            1 Fall           2009 F
+                                               45678 CS-101            1 Spring         2010 B+
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+                                               45678 CS-319            1 Spring         2010 B
+     54321 Williams  Comp.Sci.         54      54321 CS-101            1 Fall           2009 A-
+     54321 Williams  Comp.Sci.         54      54321 CS-190            2 Spring         2009 B+
+     55739 Sanchez   Music             38      55739 MU-199            1 Spring         2010 A-
+     76543 Brown     Comp.Sci.         58      76543 CS-101            1 Fall           2009 A
+     76543 Brown     Comp.Sci.         58      76543 CS-319            2 Spring         2010 A
+                                               76553 EE-181            1 Spring         2009 C
+     98765 Bourikas  Elec.Eng.         98      98765 CS-101            2 Fall           2009 C-
+     98765 Bourikas  Elec.Eng.         98      98765 CS-315            1 Spring         2010 B
+     98988 Tanaka    Biology          120      98988 BIO-101           2 Summer         2009 A
+     98988 Tanaka    Biology          120      98988 BIO-301           1 Summer         2010
+
+        ID NAME      DEPT_NAME    TO_CRED         ID COURSE_I     SEC_ID SEMESTER       YEAR GR
+---------- --------- --------- ---------- ---------- -------- ---------- -------- ---------- --
+     76653 Aoi       Elec.Eng.         60
+     70557 Snow      Physics            0
+
+24 rows selected.

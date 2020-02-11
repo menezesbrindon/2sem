@@ -1,0 +1,210 @@
+Created by PLY version 3.7 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    MINUS
+    DIV
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> term exp
+Rule 2     exp -> PLUS term exp
+Rule 3     exp -> <empty>
+Rule 4     term -> factor t
+Rule 5     t -> TIMES factor t
+Rule 6     t -> <empty>
+Rule 7     factor -> LPAREN expression RPAREN
+Rule 8     factor -> NUMBER
+
+Terminals, with rules where they appear
+
+DIV                  : 
+LPAREN               : 7
+MINUS                : 
+NUMBER               : 8
+PLUS                 : 2
+RPAREN               : 7
+TIMES                : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+exp                  : 1 2
+expression           : 7 0
+factor               : 4 5
+t                    : 4 5
+term                 : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . term exp
+    (4) term -> . factor t
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . NUMBER
+
+    LPAREN          shift and go to state 2
+    NUMBER          shift and go to state 5
+
+    factor                         shift and go to state 4
+    term                           shift and go to state 1
+    expression                     shift and go to state 3
+
+state 1
+
+    (1) expression -> term . exp
+    (2) exp -> . PLUS term exp
+    (3) exp -> .
+
+    PLUS            shift and go to state 6
+    $end            reduce using rule 3 (exp -> .)
+    RPAREN          reduce using rule 3 (exp -> .)
+
+    exp                            shift and go to state 7
+
+state 2
+
+    (7) factor -> LPAREN . expression RPAREN
+    (1) expression -> . term exp
+    (4) term -> . factor t
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . NUMBER
+
+    LPAREN          shift and go to state 2
+    NUMBER          shift and go to state 5
+
+    factor                         shift and go to state 4
+    term                           shift and go to state 1
+    expression                     shift and go to state 8
+
+state 3
+
+    (0) S' -> expression .
+
+
+
+state 4
+
+    (4) term -> factor . t
+    (5) t -> . TIMES factor t
+    (6) t -> .
+
+    TIMES           shift and go to state 10
+    PLUS            reduce using rule 6 (t -> .)
+    $end            reduce using rule 6 (t -> .)
+    RPAREN          reduce using rule 6 (t -> .)
+
+    t                              shift and go to state 9
+
+state 5
+
+    (8) factor -> NUMBER .
+
+    TIMES           reduce using rule 8 (factor -> NUMBER .)
+    PLUS            reduce using rule 8 (factor -> NUMBER .)
+    $end            reduce using rule 8 (factor -> NUMBER .)
+    RPAREN          reduce using rule 8 (factor -> NUMBER .)
+
+
+state 6
+
+    (2) exp -> PLUS . term exp
+    (4) term -> . factor t
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . NUMBER
+
+    LPAREN          shift and go to state 2
+    NUMBER          shift and go to state 5
+
+    factor                         shift and go to state 4
+    term                           shift and go to state 11
+
+state 7
+
+    (1) expression -> term exp .
+
+    RPAREN          reduce using rule 1 (expression -> term exp .)
+    $end            reduce using rule 1 (expression -> term exp .)
+
+
+state 8
+
+    (7) factor -> LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 12
+
+
+state 9
+
+    (4) term -> factor t .
+
+    PLUS            reduce using rule 4 (term -> factor t .)
+    $end            reduce using rule 4 (term -> factor t .)
+    RPAREN          reduce using rule 4 (term -> factor t .)
+
+
+state 10
+
+    (5) t -> TIMES . factor t
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . NUMBER
+
+    LPAREN          shift and go to state 2
+    NUMBER          shift and go to state 5
+
+    factor                         shift and go to state 13
+
+state 11
+
+    (2) exp -> PLUS term . exp
+    (2) exp -> . PLUS term exp
+    (3) exp -> .
+
+    PLUS            shift and go to state 6
+    $end            reduce using rule 3 (exp -> .)
+    RPAREN          reduce using rule 3 (exp -> .)
+
+    exp                            shift and go to state 14
+
+state 12
+
+    (7) factor -> LPAREN expression RPAREN .
+
+    TIMES           reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+
+
+state 13
+
+    (5) t -> TIMES factor . t
+    (5) t -> . TIMES factor t
+    (6) t -> .
+
+    TIMES           shift and go to state 10
+    PLUS            reduce using rule 6 (t -> .)
+    $end            reduce using rule 6 (t -> .)
+    RPAREN          reduce using rule 6 (t -> .)
+
+    t                              shift and go to state 15
+
+state 14
+
+    (2) exp -> PLUS term exp .
+
+    $end            reduce using rule 2 (exp -> PLUS term exp .)
+    RPAREN          reduce using rule 2 (exp -> PLUS term exp .)
+
+
+state 15
+
+    (5) t -> TIMES factor t .
+
+    PLUS            reduce using rule 5 (t -> TIMES factor t .)
+    $end            reduce using rule 5 (t -> TIMES factor t .)
+    RPAREN          reduce using rule 5 (t -> TIMES factor t .)
+

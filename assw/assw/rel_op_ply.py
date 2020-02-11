@@ -1,10 +1,10 @@
 import ply.lex as lex
 import ply.yacc as yacc
 import sys
-tokens = ['LT','GT','GE','LE','EQUAL']
+tokens = ['LT','GrT','GE','LE','EQUAL']
 
 t_LT = r'<'
-t_GT = r'>'
+t_GrT = r'>'
 t_GE = r'>='
 t_LE= r'<='
 t_EQUAL = r'=='

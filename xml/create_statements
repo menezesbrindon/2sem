@@ -1,0 +1,15 @@
+DROP TABLE Donor;
+CREATE TABLE Donor (	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,	rollNumber VARCHAR(100),	name VARCHAR(255),	bloodType VARCHAR(10),	gender VARCHAR(1),	birthDate DATETIME,	lastDonationDate DATETIME,	panchayat VARCHAR(255),	weight DECIMAL(7,3),	timesDonated INT,	phoneNumber VARCHAR(255),	email VARCHAR(255),	address VARCHAR(1000),	plateletDonor BOOLEAN,
+	active BOOLEAN);	
+DROP TABLE Donation;
+CREATE TABLE Donation (
+	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	donationDate DATETIME,
+	hospital  VARCHAR(255),
+	notes  VARCHAR(1000));
+	
+DROP TABLE Donates;
+CREATE TABLE Donates (
+	donorId INT(11) REFERENCES Donor,
+	donationId INT(11) REFERENCES Donation);
+	
